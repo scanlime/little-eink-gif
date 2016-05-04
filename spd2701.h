@@ -53,8 +53,8 @@ public:
     void writeData(uint8_t data);
     void writeData(const uint8_t* data, int count);
 
-    static const int width = 104;
-    static const int height = 212;
+    static const int width = 72;
+    static const int height = 172;
 
     uint8_t buffer[width/4 * height];
 

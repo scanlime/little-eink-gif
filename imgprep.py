@@ -7,6 +7,7 @@ from glob import glob
 from PIL import Image
 import struct
 import zlib
+import os
 
 
 def deflate(data, level=9):
@@ -41,10 +42,10 @@ def encode_frame(im):
 	return zfb + chr(0) * (-len(zfb) & 3)
 
 def encode_image(im):
-	assert im.size == (104, 212)
+	assert im.size == (72, 172)
 	results = []
 	while True:
-		millis = im.info.get('duration') or 4000
+		millis = im.info.get('duration') or 6000
 		data = encode_frame(im)
 		header = struct.pack("<LL", millis, len(data))
 		results.append(header)
@@ -59,8 +60,9 @@ def encode_image(im):
 def main():
 	f = open('images.bin', 'wb')
 	for file in glob('images/*'):
-		print('  IMAGE   %s' % file)
-		f.write(encode_image(Image.open(file)))
+		if os.path.isfile(file):
+			print('  IMAGE   %s' % file)
+			f.write(encode_image(Image.open(file)))
 	f.close()
 
 if __name__ == '__main__':
