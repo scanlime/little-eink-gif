@@ -38,7 +38,7 @@ public:
             uint32_t DC_port, uint32_t DC_out_pin,          // Data / Command
             uint32_t BUSY_port, uint32_t BUSY_in_pin)       // Busy Input
 
-    : m_SDA_port(SDA_port),   m_SDA_out_pin(SDA_out_pin),
+      : m_SDA_port(SDA_port),   m_SDA_out_pin(SDA_out_pin),
         m_SCLK_port(SCLK_port), m_SCLK_out_pin(SCLK_out_pin),
         m_CS_port(CS_port),     m_CS_out_pin(CS_out_pin),
         m_DC_port(DC_port),     m_DC_out_pin(DC_out_pin),
