@@ -27,7 +27,12 @@ def deflate(data, level=9):
 
 def encode_frame(im):
 	# Convert to 2-bit per pixel grayscale
-	gray = im.convert('L').tobytes()
+
+	bg = Image.new('L', im.size, color=255)
+	rgba = im.convert('RGBA')
+	bg.paste(rgba, mask=rgba.split()[3])
+	gray = bg.tobytes()
+
 	fb = ''.join(chr(
 		((ord(gray[i*4 + 0]) >> 6) << 6) |
 		((ord(gray[i*4 + 1]) >> 6) << 4) |
