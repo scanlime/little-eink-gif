@@ -60,6 +60,7 @@ def encode_image(im):
 def main():
 	f = open('images.bin', 'wb')
 	for file in glob('images/*'):
+		print('  IMAGE   %s' % file)
 		f.write(encode_image(Image.open(file)))
 	f.close()
 
