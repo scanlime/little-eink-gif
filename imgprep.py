@@ -1,7 +1,6 @@
 #
-# Quick utility to pre-process images (including animaged gifs) into
-# frames that are already in the proper format for the e-ink module
-# and compressed using a simple LZ77 implementation.
+# Quick utility to pre-process images (including animaged gifs)
+# into a binary blob of compressed framebuffer data.
 #
 
 from glob import glob
